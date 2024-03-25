@@ -7,8 +7,12 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 	if(isOption){
 		const e = event.target
 		const html = await window.gl.load(e.id)
+		const config = await window.gl.config()
+		
 		document.getElementById('main-display').innerHTML = html
-		autoload()
+		if(config){
+			autoload(config)
+		}
 		funcArr[e.id]()
 	}
 })

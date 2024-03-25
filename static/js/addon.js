@@ -8,6 +8,19 @@ const have = (event,cls)=>{
 	}
 }
 //Auto loading
+const autoload = (config)=>{
+	const autoArr = document.querySelectorAll('.autofill')
+	const autoLen = autoArr.length
+	if(autoLen){
+		for(var i=0;i<autoLen;i++){
+			const e = autoArr[i]				
+			const id = e.id				
+			const content = config[id] ? config[id] : ''
+			e.innerHTML = content		
+		}
+	}
+}
+/*
 const autoload = async(event)=>{
 	const autoArr = document.querySelectorAll('.autofill')
 	const autoLen = autoArr.length
@@ -24,7 +37,7 @@ const autoload = async(event)=>{
 			}
 		}
 	}
-}
+}*/
 // Partial Loader
 const load = async(event)=>{
 	const isPage = have(event,'page-btn')
