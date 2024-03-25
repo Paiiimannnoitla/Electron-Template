@@ -6,8 +6,15 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 	const isOption = have(event,'tb-option')
 	if(isOption){
 		const e = event.target
-		const html = await window.gl.load(e.id)
+		const id = e.id
+		const arr = {}
+		
 		const config = await window.gl.config()
+		
+		arr['homepage'] = config[id + '-homepage']
+		arr['id'] = id
+		
+		const html = await window.gl.load(arr)
 		
 		document.getElementById('main-display').innerHTML = html
 		if(config){

@@ -2,9 +2,10 @@ const {ipcMain,dialog} = require('electron')
 const fs = require('fs')
 const path = require('path')
 // Page Loading
-ipcMain.handle('gl-load',(event,id)=>{
+ipcMain.handle('gl-load',(event,arr)=>{
+	const { homepage,id } = arr
 	const output = new Promise((resolve)=>{
-		const filepath = './template/' + id + '.html'
+		const filepath = './template/' + id + '/' + homepage + '.html'
 		fs.readFile(filepath,'utf8',(err,html)=>{
 			if(err){
 				console.log(err)

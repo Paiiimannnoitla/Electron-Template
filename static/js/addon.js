@@ -20,24 +20,6 @@ const autoload = (config)=>{
 		}
 	}
 }
-/*
-const autoload = async(event)=>{
-	const autoArr = document.querySelectorAll('.autofill')
-	const autoLen = autoArr.length
-	if(autoLen){
-		const config = await window.gl.config()
-		if(config){
-			for(var i=0;i<autoLen;i++){
-				const e = autoArr[i]
-				
-				const id = e.id
-				
-				const content = config[id] ? config[id] : ''
-				e.innerHTML = content		
-			}
-		}
-	}
-}*/
 // Partial Loader
 const load = async(event)=>{
 	const isPage = have(event,'page-btn')
