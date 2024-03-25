@@ -7,12 +7,29 @@ const have = (event,cls)=>{
 		return event.target.classList.contains(cls)
 	}
 }
-
+//Auto loading
+const autoload = async(event)=>{
+	const autoArr = document.querySelectorAll('.autofill')
+	const autoLen = autoArr.length
+	if(autoLen){
+		const config = await window.gl.config()
+		if(config){
+			for(var i=0;i<autoLen;i++){
+				const e = autoArr[i]
+				
+				const id = e.id
+				
+				const content = config[id] ? config[id] : ''
+				e.innerHTML = content		
+			}
+		}
+	}
+}
 // Partial Loader
 const load = async(event)=>{
 	const isPage = have(event,'page-btn')
 	if(isPage){
-		const config = await window.gl.config()
+		
 		const pageid = event.target.classList[1]
 			
 		const main = document.querySelector('.main-area')
@@ -23,22 +40,8 @@ const load = async(event)=>{
 		const path = func + '/' + pageid
 		const html = await window.gl.load(path)
 		if(html){
-			main.innerHTML = html
-			// Load config info
-			const saveArr = document.querySelectorAll('.save-btn')
-			if(saveArr.length){
-				if(config){
-					for(var i=0;i<saveArr.length;i++){
-						const e = saveArr[i]
-				
-						const id = e.id
-						const updateDiv = e.previousElementSibling	
-				
-						const content = config[id] ? config[id] : ''
-						updateDiv.innerHTML = content		
-					}
-				}
-			}			
+			main.innerHTML = html		
+			autoload()
 			const output = new Promise((resolve)=>{
 				resolve(true)
 			})

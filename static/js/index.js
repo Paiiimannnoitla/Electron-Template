@@ -8,6 +8,7 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 		const e = event.target
 		const html = await window.gl.load(e.id)
 		document.getElementById('main-display').innerHTML = html
+		autoload()
 		funcArr[e.id]()
 	}
 })
@@ -88,44 +89,6 @@ document.getElementById('main-display').addEventListener('click',async(event)=>{
 			
 			document.execCommand('copy')
 
-		}
-		// Vertical copy for table column
-		// Broken need to be finished
-		const isColumn = have(event,'column')
-		if(isColumn){
-			const table = event.target.closest('table')
-			const x = event.target.cellIndex
-			const cellArr = getColumn(table,x)
-			
-			const groupArr = []
-			for(var i=1;i<cellArr.length;i++){
-				const e = cellArr[i]
-				const isGroup = e.classList.contains('group')
-				if(isGroup){
-					groupArr[i-1] = e
-				}else{
-					break
-				}
-			}
-			
-			const selectArea = document.createElement('table')
-			const child = document.createElement('tbody')
-			child.classList.add('fake-token')
-			selectArea.appendChild(child)
-			
-			
-			const target = selectArea.childNodes[0]
-			for(var i=0;i<groupArr.length;i++){
-				target.appendChild(groupArr[i])
-			}
-			
-			const range = document.createRange()
-			range.selectNode(child)
-			const selection = window.getSelection()
-			selection.removeAllRanges()
-			selection.addRange(range)
-			
-			document.execCommand('copy')
 		}
 	}
 })
