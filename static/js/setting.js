@@ -1,6 +1,10 @@
 
 const stMain = ()=>{
-	console.log(100)
+	const main = document.getElementById('st-main')
+	main.addEventListener('click',async(event)=>{
+		
+		//
+	})
 }
 const stInit = () =>{
 	const output = new Promise((resolve)=>{

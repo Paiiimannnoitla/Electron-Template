@@ -1,5 +1,4 @@
 let currOp = ''
-let config = {}
 const funcArr = []
 
 document.getElementById('toolbar').addEventListener('click',async(event)=>{
@@ -11,14 +10,18 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 		
 		const config = await window.gl.config()
 		
-		arr['homepage'] = config[id + '-homepage']
-		arr['id'] = id
+		arr['name'] = id
+		const structure = await window.gl.load(arr)
 		
-		const html = await window.gl.load(arr)
+		arr['name'] = id + '/' + config[id + '-homepage']		
+		const homepage = await window.gl.load(arr)
 		
-		document.getElementById('main-display').innerHTML = html
+		document.getElementById('main-display').innerHTML = structure
 		if(config){
 			autoload(config)
+			document.querySelector('.main-area').innerHTML = homepage
+			
+			currOp = document.querySelector('.page-area').name
 		}
 		funcArr[e.id]()
 	}
@@ -35,7 +38,7 @@ document.getElementById('main-display').addEventListener('click',async(event)=>{
 		const change = e.previousElementSibling.innerHTML
 	
 		dataArr['value'] = change
-		dataArr['key'] = e.id
+		dataArr['key'] = e.name
 		
 		const saveStatus = await window.gl.save(dataArr)
 	}

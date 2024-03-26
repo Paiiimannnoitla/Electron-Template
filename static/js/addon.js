@@ -16,6 +16,7 @@ const autoload = (config)=>{
 			const e = autoArr[i]				
 			const id = e.id				
 			const content = config[id] ? config[id] : ''
+			console.log(id)
 			e.innerHTML = content		
 		}
 	}

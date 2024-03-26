@@ -3,9 +3,9 @@ const fs = require('fs')
 const path = require('path')
 // Page Loading
 ipcMain.handle('gl-load',(event,arr)=>{
-	const { homepage,id } = arr
+	const { name } = arr
 	const output = new Promise((resolve)=>{
-		const filepath = './template/' + id + '/' + homepage + '.html'
+		const filepath = './template/' + name + '.html'
 		fs.readFile(filepath,'utf8',(err,html)=>{
 			if(err){
 				console.log(err)
