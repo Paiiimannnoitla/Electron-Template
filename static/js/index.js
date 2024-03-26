@@ -1,4 +1,4 @@
-let currOp = ''
+//let currSection = ''
 const funcArr = []
 
 document.getElementById('toolbar').addEventListener('click',async(event)=>{
@@ -20,7 +20,6 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 		if(config){		
 			document.querySelector('.main-area').innerHTML = homepage
 			autoload(config)
-			currOp = document.querySelector('.page-area').name
 		}
 		funcArr[e.id]()
 	}
@@ -29,12 +28,29 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 //Path button
 document.getElementById('main-display').addEventListener('click',async(event)=>{
 	const id = event.target.id
+	
+	// Page loading Function
+	const isLoad = have(event,'page-btn')
+	if(isLoad){
+		const name = event.target.getAttribute('name')
+		
+		const section = event.target.closest('.function-area').getAttribute('name')
+
+		const arr = {}
+		arr['name'] = section + '/' + name
+		
+		const html = await window.gl.load(arr)
+		document.querySelector('.main-area').innerHTML = html
+
+	}
 	//Save Function
 	const isSave = have(event,'save-btn')
 	if(isSave){
 		const e = event.target
 		const dataArr = {}
 		const change = e.previousElementSibling.innerHTML
+		
+		console.log(e.name)
 	
 		dataArr['value'] = change
 		dataArr['key'] = e.name

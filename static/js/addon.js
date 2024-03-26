@@ -11,17 +11,18 @@ const have = (event,cls)=>{
 const autoload = (config)=>{
 	const autoArr = document.querySelectorAll('.autofill')
 	const autoLen = autoArr.length
-	console.log(autoArr)
+	
 	if(autoLen){
 		for(var i=0;i<autoLen;i++){
 			const e = autoArr[i]				
 			const id = e.id				
 			const content = config[id] ? config[id] : ''
-			console.log(id)
+			
 			e.innerHTML = content		
 		}
 	}
 }
+
 // Partial Loader
 const load = async(event)=>{
 	const isPage = have(event,'page-btn')
