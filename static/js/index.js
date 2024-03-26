@@ -1,4 +1,5 @@
 //let currSection = ''
+const loadArr = []
 const funcArr = []
 
 document.getElementById('toolbar').addEventListener('click',async(event)=>{
@@ -9,6 +10,7 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 		const arr = {}
 		
 		const config = await window.gl.config()
+		loadArr[id]()
 		
 		arr['name'] = id
 		const structure = await window.gl.load(arr)
@@ -21,7 +23,7 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 			document.querySelector('.main-area').innerHTML = homepage
 			autoload(config)
 		}
-		funcArr[e.id]()
+		funcArr[id]()
 	}
 })
 

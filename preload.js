@@ -8,6 +8,11 @@ contextBridge.exposeInMainWorld('gl', {
 	config:			()		=> ipcRenderer.invoke('gl-config')
 })
 
+// Setting Function
+contextBridge.exposeInMainWorld('st', {
+    load: 			()	=> ipcRenderer.invoke('st-load')
+})
+
 
 
 

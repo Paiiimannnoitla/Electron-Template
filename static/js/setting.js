@@ -19,3 +19,8 @@ funcArr['setting'] = async()=>{
 		stMain()
 	}
 }
+
+loadArr['setting'] = async()=>{
+	const pageArr = await window.st.load()
+	console.log(pageArr)
+}

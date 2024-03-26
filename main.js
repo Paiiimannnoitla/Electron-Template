@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain, dialog, session } = require('electron')
 const path = require('path')
 const fs = require('fs')
 require('./script/GeneralFunction.js')
+require('./script/SettingFunction.js')
 //const {sysBuild} = require('./build.js')
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
