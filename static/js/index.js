@@ -17,10 +17,9 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 		const homepage = await window.gl.load(arr)
 		
 		document.getElementById('main-display').innerHTML = structure
-		if(config){
-			autoload(config)
+		if(config){		
 			document.querySelector('.main-area').innerHTML = homepage
-			
+			autoload(config)
 			currOp = document.querySelector('.page-area').name
 		}
 		funcArr[e.id]()

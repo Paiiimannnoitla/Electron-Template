@@ -11,6 +11,7 @@ const have = (event,cls)=>{
 const autoload = (config)=>{
 	const autoArr = document.querySelectorAll('.autofill')
 	const autoLen = autoArr.length
+	console.log(autoArr)
 	if(autoLen){
 		for(var i=0;i<autoLen;i++){
 			const e = autoArr[i]				
