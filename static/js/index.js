@@ -35,12 +35,17 @@ document.getElementById('main-display').addEventListener('click',async(event)=>{
 		const name = event.target.getAttribute('name')
 		
 		const section = event.target.closest('.function-area').getAttribute('name')
-
+		const config = await window.gl.config()
+		
 		const arr = {}
 		arr['name'] = section + '/' + name
 		
 		const html = await window.gl.load(arr)
 		document.querySelector('.main-area').innerHTML = html
+		
+		if(config){
+			autoload(config)
+		}
 
 	}
 	//Save Function

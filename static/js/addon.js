@@ -24,6 +24,7 @@ const autoload = (config)=>{
 }
 
 // Partial Loader
+/*
 const load = async(event)=>{
 	const isPage = have(event,'page-btn')
 	if(isPage){
@@ -46,7 +47,7 @@ const load = async(event)=>{
 			return output
 		}
 	}
-}
+}*/
 // Transform into money format
 const moneyFormat = (n,isInsert=false)=>{
 	n = n + ''
