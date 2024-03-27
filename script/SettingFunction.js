@@ -23,8 +23,17 @@ ipcMain.handle('st-load',(event)=>{
 				innerChain[i] = new Promise((resolve)=>{
 					const dir = dirArr[i]
 					const dirpath = temppath + '/' + dir
-					fs.readdir(dirpath,(err,filelist)=>{
-						console.log(filelist)
+					fs.readdir(dirpath,(err,files)=>{
+						const filelist = []
+						for(var i=0;i<files.length;i++){
+							const f = files[i]
+
+							const isTemplate = f.substring(f.length-5) == '.html'
+							if(isTemplate){
+								filelist[filelist.length] = f.replace('.html','')
+							}
+						}
+
 						pageArr[dir] = filelist
 						resolve(true)
 					})

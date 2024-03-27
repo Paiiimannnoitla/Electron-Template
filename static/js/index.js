@@ -1,6 +1,7 @@
 //let currSection = ''
 const loadArr = []
 const funcArr = []
+const pageArr = []
 let currFunc = ''
 let currPage = ''
 document.getElementById('toolbar').addEventListener('click',async(event)=>{
@@ -30,6 +31,7 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 			autoload(config)
 		}
 		funcArr[id]()
+		pageArr[id]()
 	}
 })
 
@@ -55,7 +57,7 @@ document.getElementById('main-display').addEventListener('click',async(event)=>{
 			currPage = document.querySelector('.page-area').getAttribute('name')
 			autoload(config)
 		}
-
+		pageArr[currFunc]()
 	}
 	//Save Function
 	const isSave = have(event,'save-btn')

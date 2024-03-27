@@ -6,15 +6,20 @@ const stMain = ()=>{
 		//
 	})
 }
+
+// Function first run
 const stInit = () =>{
-	console.log(currFunc)
-	console.log(currPage)
 	const output = new Promise((resolve)=>{
 		resolve(true)
 	})
 	return output
 }
 
+// Page loading Function
+pageArr['setting'] = async()=>{
+	console.log(stArr)
+}
+// Main function
 funcArr['setting'] = async()=>{
 	const initStatus = await stInit()
 	if(initStatus){
@@ -22,6 +27,7 @@ funcArr['setting'] = async()=>{
 	}
 }
 
+// Preload data
 loadArr['setting'] = async()=>{
 	stArr['template'] = await window.st.load()
 }
