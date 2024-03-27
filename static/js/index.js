@@ -1,7 +1,8 @@
 //let currSection = ''
 const loadArr = []
 const funcArr = []
-
+let currFunc = ''
+let currPage = ''
 document.getElementById('toolbar').addEventListener('click',async(event)=>{
 	const isOption = have(event,'tb-option')
 	if(isOption){
@@ -10,6 +11,7 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 		const arr = {}
 		
 		const config = await window.gl.config()
+		
 		loadArr[id]()
 		
 		arr['name'] = id
@@ -21,6 +23,10 @@ document.getElementById('toolbar').addEventListener('click',async(event)=>{
 		document.getElementById('main-display').innerHTML = structure
 		if(config){		
 			document.querySelector('.main-area').innerHTML = homepage
+			
+			currFunc = document.querySelector('.display-area').getAttribute('name')
+			currPage = document.querySelector('.page-area').getAttribute('name')
+						
 			autoload(config)
 		}
 		funcArr[id]()
@@ -36,16 +42,17 @@ document.getElementById('main-display').addEventListener('click',async(event)=>{
 	if(isLoad){
 		const name = event.target.getAttribute('name')
 		
-		const section = event.target.closest('.function-area').getAttribute('name')
+		//currFunc = event.target.closest('.function-area').getAttribute('name')
 		const config = await window.gl.config()
-		
+				
 		const arr = {}
-		arr['name'] = section + '/' + name
+		arr['name'] = currFunc + '/' + name
 		
 		const html = await window.gl.load(arr)
 		document.querySelector('.main-area').innerHTML = html
 		
 		if(config){
+			currPage = document.querySelector('.page-area').getAttribute('name')
 			autoload(config)
 		}
 

@@ -1,4 +1,4 @@
-
+const stArr = {}
 const stMain = ()=>{
 	const main = document.getElementById('st-main')
 	main.addEventListener('click',async(event)=>{
@@ -7,6 +7,8 @@ const stMain = ()=>{
 	})
 }
 const stInit = () =>{
+	console.log(currFunc)
+	console.log(currPage)
 	const output = new Promise((resolve)=>{
 		resolve(true)
 	})
@@ -21,6 +23,5 @@ funcArr['setting'] = async()=>{
 }
 
 loadArr['setting'] = async()=>{
-	const pageArr = await window.st.load()
-	console.log(pageArr)
+	stArr['template'] = await window.st.load()
 }
