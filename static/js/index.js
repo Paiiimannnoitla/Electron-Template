@@ -43,8 +43,7 @@ document.getElementById('main-display').addEventListener('click',async(event)=>{
 	const isLoad = have(event,'page-btn')
 	if(isLoad){
 		const name = event.target.getAttribute('name')
-		
-		//currFunc = event.target.closest('.function-area').getAttribute('name')
+
 		const config = await window.gl.config()
 				
 		const arr = {}
@@ -64,9 +63,14 @@ document.getElementById('main-display').addEventListener('click',async(event)=>{
 	if(isSave){
 		const e = event.target
 		const dataArr = {}
-		const change = e.previousElementSibling.innerHTML
-		
-		console.log(e.name)
+		let target
+		const isTable = e.parentNode.nodeName == 'TD'
+		if(isTable){
+			target = e.parentNode.previousElementSibling.children[0]
+		}else{
+			target = e.previousElementSibling 
+		}
+		const change = target.innerHTML
 	
 		dataArr['value'] = change
 		dataArr['key'] = e.name
