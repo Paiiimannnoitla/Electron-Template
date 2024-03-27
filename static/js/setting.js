@@ -2,8 +2,20 @@ const stArr = {}
 const stMain = ()=>{
 	const main = document.getElementById('st-main')
 	main.addEventListener('click',async(event)=>{
-		
-		//
+		const id = event.target.id
+		// Homepage
+		const isHomepage = currPage == 'homepage'
+		if(isHomepage){
+			// Homepage change Button
+			const isChange = have(event,'change-btn')
+			if(isChange){
+				const tr = event.target.closest('tr')
+				const menu = tr.children[3].children[0]
+				const updateDiv = tr.children[1].children[0]
+				
+				updateDiv.innerHTML = menu.value
+			}
+		}
 	})
 }
 
