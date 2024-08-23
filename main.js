@@ -1,10 +1,9 @@
 const { app, BrowserWindow, ipcMain, dialog, session } = require('electron')
 const path = require('path')
 const fs = require('fs')
-const { readdir } = require('fs/promises')
+const { readdir,mkdir,writeFile } = require('fs/promises')
 require('./script/GeneralFunction.js')
 require('./script/SettingFunction.js')
-//const {sysBuild} = require('./build.js')
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 app.allowRendererProcessReuse = false
@@ -30,27 +29,39 @@ const WindowMain = async () => {
     win.loadFile('./index.html')	
 
 }
-const sysBuild = async()=>{
+const sysBuild = ()=>{
 	const configDir = './data'
-	const currList = await readdir('./')
-	if(currList){
-		console.log(currList)
-		const dataDirStatus = currList.indexOf('data') + 1
-		if(dataDirStatus){
-			const dataList = await readdir(configDir)
-			if(dataList){
-				const configStatus = dataList.indexOf('config.json') + 1
-				if(configStatus){
-					return true
+	const output = new Promise(async(resolve)=>{
+		const currList = await readdir('./')
+		if(currList){
+			const configDict = {"test-auto-fill":"Auto loading function works fine","setting-homepage":"homepage","test-homepage":"test-channel"}
+			const json = JSON.stringify(configDict)
+		
+			const dataDirStatus = currList.indexOf('data') + 1
+			if(dataDirStatus){
+				const dataList = await readdir(configDir)
+				if(dataList){
+					const configStatus = dataList.indexOf('config.json') + 1
+					if(configStatus){
+						resolve(true)
+					}
 				}
+			}else{
+				fs.mkdir('./data',(err,res)=>{
+					fs.writeFile('./data/config.json',json,()=>{
+						resolve(true)
+					})
+				})
 			}
-		}
-	}
+		}	
+	})
+	return output
 }
 const init = async() =>{  
 	//const isBuild = true
 	
 	const isBuild = await sysBuild()
+	console.log(isBuild)
 	if(isBuild){
 		app.whenReady().then(() => {
 			WindowMain()

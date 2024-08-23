@@ -5,8 +5,11 @@
 ---
 	## 2024.08.23		version 0.0.4 -- Setting
 	-- Function implementation
+	-- Function enhancement
 	# Added
 	1. Add data checking mechanism
+		-- finished
+	2. Create path and json if directory is missing
 		-- finished
 ---
 	## 2024.07.23		version 0.0.1 -- main
