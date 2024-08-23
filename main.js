@@ -29,9 +29,10 @@ const WindowMain = async () => {
     win.loadFile('./index.html')	
 
 }
-const sysBuild = ()=>{
+const sysBuild = async()=>{
 	const configDir = './data'
-	const output = new Promise(async(resolve)=>{
+	const promiseChain = []
+	promiseChain[0] = new Promise(async(resolve)=>{
 		const currList = await readdir('./')
 		if(currList){
 			const configDict = {"test-auto-fill":"Auto loading function works fine","setting-homepage":"homepage","test-homepage":"test-channel"}
@@ -59,6 +60,7 @@ const sysBuild = ()=>{
 			}
 		}	
 	})
+	const output = await Promise.all(promiseChain)
 	return output
 }
 const init = async() =>{  

@@ -5,11 +5,13 @@ const path = require('path')
 ipcMain.handle('gl-load',(event,arr)=>{
 	const { name } = arr
 	const output = new Promise((resolve)=>{
-		const filepath = './template/' + name + '.html'
+		let filepath = './template/' + name + '.html'
 		fs.readFile(filepath,'utf8',(err,html)=>{
 			if(err){
-				console.log(err)
-				resolve(false)
+				filepath = `./resources/app/template` + name + `.html`
+				fs.readFile(filepath,'utf8',(err,html)=>{
+					resolve(html)
+				})
 			}else{
 				resolve(html)
 			}		
