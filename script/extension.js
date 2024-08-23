@@ -93,11 +93,11 @@ const env = (key)=>{
 	const output = new Promise((resolve)=>{
 		const filepath = "./data/config.json"
 		fs.readFile(filepath,(err,file)=>{
+			const config = JSON.parse(file)
 			if(key){
-				
+				const value = config[key]
+				resolve(value)
 			}else{
-				const config = JSON.parse(file)
-				console.log(config)
 				resolve(config)
 			}
 		})

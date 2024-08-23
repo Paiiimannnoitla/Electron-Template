@@ -6,8 +6,6 @@ const { env } = require('./script/extension.js')
 require('./script/GeneralFunction.js')
 require('./script/SettingFunction.js')
 
-const a = env()
-
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 app.allowRendererProcessReuse = false
 

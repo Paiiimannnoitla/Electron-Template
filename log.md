@@ -19,6 +19,8 @@
 		-- finished
 	5. Add env function
 		-- finished
+	6. Finish the env function access
+		-- finished
 	# Changed
 	1. Rewrite sysBuild function as promise chain for further developing
 		-- finished
