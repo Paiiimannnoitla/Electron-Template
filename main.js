@@ -32,6 +32,7 @@ const WindowMain = async () => {
 const sysBuild = async()=>{
 	const configDir = './data'
 	const promiseChain = []
+	// Data and config check
 	promiseChain[0] = new Promise(async(resolve)=>{
 		const currList = await readdir('./')
 		if(currList){

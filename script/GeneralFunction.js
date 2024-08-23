@@ -8,7 +8,7 @@ ipcMain.handle('gl-load',(event,arr)=>{
 		let filepath = './template/' + name + '.html'
 		fs.readFile(filepath,'utf8',(err,html)=>{
 			if(err){
-				filepath = `./resources/app/template` + name + `.html`
+				filepath = `./resources/app/template/` + name + `.html`
 				fs.readFile(filepath,'utf8',(err,html)=>{
 					resolve(html)
 				})

@@ -7,6 +7,7 @@
 	-- Function implementation
 	-- Function enhancement
 	-- Rewrite function
+	-- Bug fix
 	# Added
 	1. Add data checking mechanism
 		-- finished
@@ -16,6 +17,9 @@
 		-- finished
 	# Changed
 	1. Rewrite sysBuild function as promise chain for further developing
+		-- finished
+	# Fixed
+	1. Fix the bug that compile exe cannot load template
 		-- finished
 ---
 	## 2024.07.23		version 0.0.1 -- main
