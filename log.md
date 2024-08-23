@@ -2,6 +2,8 @@
 
 	1. Set a goal
 		-- processing
+	2. Check if setting function really need to load config twice
+		-- processing
 ---
 	## 2024.08.23		version 0.0.4 -- Setting
 	-- Function implementation
@@ -25,6 +27,8 @@
 		-- finished
 	# Changed
 	1. Rewrite sysBuild function as promise chain for further developing
+		-- finished
+	2. Adjust env detect function for production environment
 		-- finished
 	# Fixed
 	1. Fix the bug that compile exe cannot load template

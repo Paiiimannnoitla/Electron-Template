@@ -1,8 +1,9 @@
 const {ipcMain,dialog} = require('electron')
 const fs = require('fs')
 const path = require('path')
+const { env } = require('./extension.js')
 // Page Loading
-ipcMain.handle('gl-load',(event,arr)=>{
+ipcMain.handle('gl-load',async(event,arr)=>{
 	const { name } = arr
 	const output = new Promise((resolve)=>{
 		let filepath = './template/' + name + '.html'

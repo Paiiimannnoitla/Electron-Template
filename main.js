@@ -68,14 +68,14 @@ const sysBuild = async()=>{
 		}	
 	})
 	// Production mode check
-	if(configStatus){
+	if(await configStatus){
 		promiseChain[0] = new Promise(async(resolve)=>{
 			const isProduction = await env('production-mode')
 			if(isProduction){
 				resolve(true)
 			}else{
 				const currList = await readdir('./')
-				const isLocale = currList.indexOf('locale') + 1
+				const isLocale = currList.indexOf('locales') + 1
 				if(isLocale){
 					const writeStatus = await env('production-mode',true)
 					if(writeStatus){
