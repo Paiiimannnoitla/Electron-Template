@@ -34,10 +34,15 @@ const sysBuild = async()=>{
 	const configDir = './data'
 	const promiseChain = []
 	// Data and config check
-	promiseChain[0] = new Promise(async(resolve)=>{
+	const configStatus = new Promise(async(resolve)=>{
 		const currList = await readdir('./')
 		if(currList){
-			const configDict = {"test-auto-fill":"Auto loading function works fine","setting-homepage":"homepage","test-homepage":"test-channel"}
+			const configDict = {
+				"test-auto-fill":"Auto loading function works fine",
+				"setting-homepage":"homepage",
+				"test-homepage":"test-channel",
+				"production-mode":false
+			}
 			const json = JSON.stringify(configDict)
 		
 			const dataDirStatus = currList.indexOf('data') + 1
@@ -62,6 +67,26 @@ const sysBuild = async()=>{
 			}
 		}	
 	})
+	// Production mode check
+	if(configStatus){
+		promiseChain[0] = new Promise(async(resolve)=>{
+			const isProduction = await env('production-mode')
+			if(isProduction){
+				resolve(true)
+			}else{
+				const currList = await readdir('./')
+				const isLocale = currList.indexOf('locale') + 1
+				if(isLocale){
+					const writeStatus = await env('production-mode',true)
+					if(writeStatus){
+						resolve(true)
+					}
+				}else{
+					resolve(true)
+				}
+			}
+		})
+	}
 	const output = await Promise.all(promiseChain)
 	return output
 }

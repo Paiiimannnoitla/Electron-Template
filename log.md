@@ -21,6 +21,8 @@
 		-- finished
 	6. Finish the env function access
 		-- finished
+	7. Add production or development environment detection
+		-- finished
 	# Changed
 	1. Rewrite sysBuild function as promise chain for further developing
 		-- finished

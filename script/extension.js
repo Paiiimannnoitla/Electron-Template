@@ -89,14 +89,23 @@ const clear = (arr,allowDuplicate = false,dictPass = false)=>{
 }
 
 // Load config 
-const env = (key)=>{
+const env = (key,newValue=false)=>{
 	const output = new Promise((resolve)=>{
 		const filepath = "./data/config.json"
 		fs.readFile(filepath,(err,file)=>{
 			const config = JSON.parse(file)
 			if(key){
-				const value = config[key]
-				resolve(value)
+				if(newValue){
+					config[key] = newValue
+					const json = JSON.stringify(config)
+					fs.writeFile(filepath,json,()=>{
+						resolve(true)
+					})
+				}else{
+					const value = config[key]
+					resolve(value)
+				}
+				
 			}else{
 				resolve(config)
 			}
