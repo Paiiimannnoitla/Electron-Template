@@ -30,6 +30,8 @@
 		-- finished
 	2. Adjust env detect function for production environment
 		-- finished
+	3. Adjust st-load for production 
+		-- finished
 	# Fixed
 	1. Fix the bug that compile exe cannot load template
 		-- finished
