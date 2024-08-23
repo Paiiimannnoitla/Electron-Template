@@ -44,6 +44,10 @@ const sysBuild = ()=>{
 					const configStatus = dataList.indexOf('config.json') + 1
 					if(configStatus){
 						resolve(true)
+					}else{
+						fs.writeFile('./data/config.json',json,()=>{
+							resolve(true)
+						})
 					}
 				}
 			}else{
@@ -58,8 +62,6 @@ const sysBuild = ()=>{
 	return output
 }
 const init = async() =>{  
-	//const isBuild = true
-	
 	const isBuild = await sysBuild()
 	console.log(isBuild)
 	if(isBuild){

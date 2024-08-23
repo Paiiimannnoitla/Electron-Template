@@ -11,6 +11,8 @@
 		-- finished
 	2. Create path and json if directory is missing
 		-- finished
+	3. Create the missing config files if missing
+		-- finished
 ---
 	## 2024.07.23		version 0.0.1 -- main
 	-- Fuction implementation
