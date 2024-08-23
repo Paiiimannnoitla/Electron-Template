@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog, session } = require('electron')
 const path = require('path')
 const fs = require('fs')
+const { readdir } = require('fs/promises')
 require('./script/GeneralFunction.js')
 require('./script/SettingFunction.js')
 //const {sysBuild} = require('./build.js')
@@ -29,9 +30,27 @@ const WindowMain = async () => {
     win.loadFile('./index.html')	
 
 }
+const sysBuild = async()=>{
+	const configDir = './data'
+	const currList = await readdir('./')
+	if(currList){
+		console.log(currList)
+		const dataDirStatus = currList.indexOf('data') + 1
+		if(dataDirStatus){
+			const dataList = await readdir(configDir)
+			if(dataList){
+				const configStatus = dataList.indexOf('config.json') + 1
+				if(configStatus){
+					return true
+				}
+			}
+		}
+	}
+}
 const init = async() =>{  
-	const isBuild = true
-	//const isBuild = await sysBuild()
+	//const isBuild = true
+	
+	const isBuild = await sysBuild()
 	if(isBuild){
 		app.whenReady().then(() => {
 			WindowMain()
