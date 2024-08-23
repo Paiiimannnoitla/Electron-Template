@@ -15,6 +15,10 @@
 		-- finished
 	3. Create the missing config files if missing
 		-- finished
+	4. Import extension.js
+		-- finished
+	5. Add env function
+		-- finished
 	# Changed
 	1. Rewrite sysBuild function as promise chain for further developing
 		-- finished

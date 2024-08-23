@@ -2,8 +2,11 @@ const { app, BrowserWindow, ipcMain, dialog, session } = require('electron')
 const path = require('path')
 const fs = require('fs')
 const { readdir,mkdir,writeFile } = require('fs/promises')
+const { env } = require('./script/extension.js')
 require('./script/GeneralFunction.js')
 require('./script/SettingFunction.js')
+
+const a = env()
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 app.allowRendererProcessReuse = false
