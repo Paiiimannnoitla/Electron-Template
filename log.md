@@ -22,6 +22,8 @@
 		-- finished
 	3. Import Object-related function like copy,destruct,append to frontend
 		-- finished
+	4. Add optMaker function for simple dropmenu creation
+		-- finished
 	# Changed
 	1. Move templatePath constant to global for further developing creation
 		-- finished

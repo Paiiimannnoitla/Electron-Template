@@ -37,11 +37,12 @@ pageArr['setting'] = async()=>{
 	const isHomepage = currPage == 'homepage'
 	if(isHomepage){
 		// Loading available homepage
-		const optArr = {}
-		const tempArr = stArr['template']
-		const keyArr = Object.keys(tempArr)
-		const valArr = Object.values(tempArr)
 		
+		const optArr = {}
+		const tempArr = Object.copy(stArr['template'])
+		/*const keyArr = Object.keys(tempArr)
+		const valArr = Object.values(tempArr)*/
+		/*
 		for(var i=0;i<valArr.length;i++){
 			const val = valArr[i]
 			for(var a=0;a<val.length;a++){
@@ -52,6 +53,11 @@ pageArr['setting'] = async()=>{
 			}
 			valArr[i] = valArr[i].join('')
 			optArr[keyArr[i]] = valArr[i]
+		}*/
+		for(const k in tempArr){
+			const arr = tempArr[k]
+			const optStr = optMaker(arr)
+			optArr[k] = optStr
 		}
 		const selArr = document.querySelectorAll('.page-dropmenu')
 		for(var i=0;i<selArr.length;i++){
@@ -66,9 +72,14 @@ pageArr['setting'] = async()=>{
 
 // Preload data
 loadArr['setting'] = async()=>{
-	//stArr['template'] = await window.st.load()
 	const templateArr = globalArr.preload.template
 	stArr['template'] = templateArr
+	console.log(templateArr)
+	const menuArr = {}
+	for(const k in templateArr){
+		const arr = templateArr[k]
+		
+	}
 	
 }
 
