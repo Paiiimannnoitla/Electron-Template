@@ -13,6 +13,10 @@
 			-- finished
 		1.2 Sort out the possible template directory
 			-- finished
+		1.3 Add htmlSlicer to simplify html file sprting task
+			-- finished
+		1.4 Add directory filter
+			-- finished
 ---
 	## 2024.08.23		version 0.0.4 -- Setting
 	-- Function implementation
