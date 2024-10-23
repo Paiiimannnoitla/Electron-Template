@@ -4,6 +4,7 @@ const path = require('path')
 const { env } = require('./extension.js')
 const { readdir } = require('fs/promises')
 
+const templatePath = './template'
 // Initialization loading
 ipcMain.handle('gl-init',async(event,arr='')=>{
 	const promiseChain = []
@@ -23,7 +24,6 @@ ipcMain.handle('gl-init',async(event,arr='')=>{
 				}
 			}
 			const templateArr = {}
-			const templatePath = './template'
 			const initArr = await readdir(templatePath)
 			if(initArr){
 				const htmlArr = []
@@ -33,7 +33,6 @@ ipcMain.handle('gl-init',async(event,arr='')=>{
 					if(html){
 						htmlArr[htmlArr.length] = html
 					}
-
 				}
 				
 				const subChain = []
