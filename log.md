@@ -18,6 +18,8 @@
 			-- finished
 		1.4 Add directory filter
 			-- finished
+	2. Add a well-structured globalArr
+		-- finished
 	# Changed
 	1. Move templatePath constant to global for further developing creation
 		-- finished

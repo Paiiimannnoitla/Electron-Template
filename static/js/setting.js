@@ -22,6 +22,7 @@ const stMain = ()=>{
 // Function first run
 const stInit = () =>{
 	const output = new Promise((resolve)=>{
+		console.log(globalArr)
 		resolve(true)
 	})
 	return output
@@ -70,5 +71,5 @@ funcArr['setting'] = async()=>{
 
 // Preload data
 loadArr['setting'] = async()=>{
-	stArr['template'] = await window.st.load()
+	//stArr['template'] = await window.st.load()
 }

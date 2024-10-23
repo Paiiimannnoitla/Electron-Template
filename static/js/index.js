@@ -4,7 +4,9 @@ const funcArr = []
 const pageArr = []
 let currFunc = ''
 let currPage = ''
-const globalArr = {}
+const globalArr = {
+	preload:'',status:{},data:{}
+}
 
 document.getElementById('toolbar').addEventListener('click',async(event)=>{
 	const isOption = have(event,'tb-option')
@@ -148,8 +150,16 @@ const init = async()=>{
 	const promiseChain = []
 	// loading homepage information
 	promiseChain[0] = new Promise(async(resolve)=>{
-		const homepageArr = await window.gl.init()
-		console.log(homepageArr)
+		const dataArr = await window.gl.init()
+		globalArr.preload = dataArr
+		resolve(true)
 	})
+	const output = await Promise.all(promiseChain)
+	if(output){
+		return true
+	}
 }
-init()
+const initStatus = init()
+if(initStatus){
+	globalArr.status.init = true
+}
