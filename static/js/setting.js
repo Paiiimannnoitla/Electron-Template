@@ -1,4 +1,5 @@
 const stArr = {}
+
 const stMain = ()=>{
 	const main = document.getElementById('st-main')
 	main.addEventListener('click',async(event)=>{
@@ -22,7 +23,8 @@ const stMain = ()=>{
 // Function first run
 const stInit = () =>{
 	const output = new Promise((resolve)=>{
-		console.log(globalArr)
+		//console.log(globalArr)
+		
 		resolve(true)
 	})
 	return output
@@ -61,7 +63,16 @@ pageArr['setting'] = async()=>{
 		return
 	}
 }
-// Main function
+
+// Preload data
+loadArr['setting'] = async()=>{
+	//stArr['template'] = await window.st.load()
+	const templateArr = globalArr.preload.template
+	stArr['template'] = templateArr
+	
+}
+
+// Main page function
 funcArr['setting'] = async()=>{
 	const initStatus = await stInit()
 	if(initStatus){
@@ -69,7 +80,3 @@ funcArr['setting'] = async()=>{
 	}
 }
 
-// Preload data
-loadArr['setting'] = async()=>{
-	//stArr['template'] = await window.st.load()
-}

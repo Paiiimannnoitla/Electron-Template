@@ -22,7 +22,58 @@ const autoload = (config)=>{
 		}
 	}
 }
-
+// Extract key and value to array
+Object.destruct = (dict)=>{
+    const k = Object.keys(dict)
+    const v = Object.values(dict)
+    return [k,v]
+}
+// Deep copy
+Object.copy = (dict)=>{
+	const str = JSON.stringify(dict)
+	const newDict = JSON.parse(str)
+	return newDict
+}
+// Append array
+Object.append = (targetDict,inputDict)=>{
+    const dataArr = []
+    // Sorting data
+	const checklist = [String,Number,Object]
+	for(const k in inputDict){
+		let arr = inputDict[k]
+		const notFormat = checklist.indexOf(arr.constructor) + 1
+		if(notFormat){
+			arr = [arr]
+		}
+		for(var i=0;i<arr.length;i++){
+		    const v = arr[i]
+		    const dataDict = {}
+		    dataDict[k] = v
+		    
+		    dataArr[dataArr.length] = dataDict
+		}
+	}
+	// Appending
+	for(var i=0;i<dataArr.length;i++){
+	    const dict = dataArr[i]
+	    for(const k in dict){
+	        const v = dict[k]
+	        
+	        const isExist = targetDict[k]
+	        if(isExist){
+	            let existedDict = targetDict[k]
+	            const isString = (existedDict.constructor == String) + (existedDict.constructor == Number)
+	            if(isString){
+	                existedDict = [existedDict]
+	            }
+	            existedDict[existedDict.length] = v
+	            targetDict[k] = existedDict
+	        }else{
+	            targetDict[k] = [v]
+	        }
+	    }
+	}
+}
 // Partial Loader
 /*
 const load = async(event)=>{

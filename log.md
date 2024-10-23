@@ -20,8 +20,12 @@
 			-- finished
 	2. Add a well-structured globalArr
 		-- finished
+	3. Import Object-related function like copy,destruct,append to frontend
+		-- finished
 	# Changed
 	1. Move templatePath constant to global for further developing creation
+		-- finished
+	2. Rewrite homepage function by globalArr
 		-- finished
 ---
 	## 2024.08.23		version 0.0.4 -- Setting
