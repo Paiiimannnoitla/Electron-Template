@@ -4,6 +4,8 @@ const funcArr = []
 const pageArr = []
 let currFunc = ''
 let currPage = ''
+const globalArr = {}
+
 document.getElementById('toolbar').addEventListener('click',async(event)=>{
 	const isOption = have(event,'tb-option')
 	if(isOption){
@@ -143,6 +145,10 @@ document.getElementById('main-display').addEventListener('click',async(event)=>{
 })
 
 const init = async()=>{
-	
+	const promiseChain = []
+	// loading homepage information
+	promiseChain[0] = new Promise(async(resolve)=>{
+		const homepageArr = await window.gl.init()
+	})
 }
 init()

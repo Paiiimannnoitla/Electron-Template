@@ -2,6 +2,26 @@ const {ipcMain,dialog} = require('electron')
 const fs = require('fs')
 const path = require('path')
 const { env } = require('./extension.js')
+const { readdir } = require('fs/promises')
+
+// Initialization loading
+ipcMain.handle('gl-init',async(event,arr='')=>{
+	const promiseChain = []
+	if(arr){
+		
+	}else{
+		promiseChain[0] = new Promise(async(resolve)=>{
+			const templatePath = './template'
+			const initArr = await readdir(templatePath)
+			if(initArr){
+				console.log(initArr)
+				resolve(initArr)
+			}
+		})
+	}
+	const output = await Promise.all(promiseChain)
+	return output
+})
 // Page Loading
 ipcMain.handle('gl-load',async(event,arr)=>{
 	const { name } = arr

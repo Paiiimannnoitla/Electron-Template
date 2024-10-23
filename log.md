@@ -5,6 +5,13 @@
 	2. Check if setting function really need to load config twice
 		-- processing
 ---
+	## 2024.10.23		version 0.0.5 -- Setting
+	-- Function implementation
+	# Added
+	1. Add gl-init function to handle global loading
+		1.1 Add gl-init structure
+			-- finished
+---
 	## 2024.08.23		version 0.0.4 -- Setting
 	-- Function implementation
 	-- Function enhancement
