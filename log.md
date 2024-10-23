@@ -11,6 +11,8 @@
 	1. Add gl-init function to handle global loading
 		1.1 Add gl-init structure
 			-- finished
+		1.2 Sort out the possible template directory
+			-- finished
 ---
 	## 2024.08.23		version 0.0.4 -- Setting
 	-- Function implementation

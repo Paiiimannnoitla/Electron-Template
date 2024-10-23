@@ -149,6 +149,7 @@ const init = async()=>{
 	// loading homepage information
 	promiseChain[0] = new Promise(async(resolve)=>{
 		const homepageArr = await window.gl.init()
+		console.log(homepageArr)
 	})
 }
 init()

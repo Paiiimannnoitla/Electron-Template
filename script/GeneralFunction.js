@@ -14,8 +14,21 @@ ipcMain.handle('gl-init',async(event,arr='')=>{
 			const templatePath = './template'
 			const initArr = await readdir(templatePath)
 			if(initArr){
-				console.log(initArr)
-				resolve(initArr)
+				const htmlArr = []
+				for(var i=0;i<initArr.length;i++){
+					const e = initArr[i]
+					const filename = e.split('.')
+					const ext = filename[filename.length-1]
+					if(ext == 'html'){
+						htmlArr[htmlArr.length] = filename[filename.length-2]
+					}
+				}
+				
+				const subChain = []
+				for(var i=0;i<htmlArr.length;i++){
+					
+				}
+				resolve(htmlArr)
 			}
 		})
 	}
