@@ -37,35 +37,29 @@ pageArr['setting'] = async()=>{
 	const isHomepage = currPage == 'homepage'
 	if(isHomepage){
 		// Loading available homepage
-		
-		const optArr = {}
 		const tempArr = Object.copy(stArr['template'])
-		/*const keyArr = Object.keys(tempArr)
-		const valArr = Object.values(tempArr)*/
-		/*
-		for(var i=0;i<valArr.length;i++){
-			const val = valArr[i]
-			for(var a=0;a<val.length;a++){
-				const e = val[a]
-				
-				const option = `<option value='` + e + `'>` + e + `</option>`
-				val[a] = option
-			}
-			valArr[i] = valArr[i].join('')
-			optArr[keyArr[i]] = valArr[i]
-		}*/
+		
+		let tableStr = ''
 		for(const k in tempArr){
+			const nameStr = `<td>` + k + `</td>`
+			
+			const defaultStr = `<td><span id='` + k + `-homepage' class='autofill'></span></td>`
+			
+			const btnStr = `<td><button name='` + k + `-homepage' class='save-btn'>`
+				+ `Save</button></td>`
+			
 			const arr = tempArr[k]
 			const optStr = optMaker(arr)
-			optArr[k] = optStr
+			const menuStr = `<td><select name="` + k + `">` + optStr + `</select></td>`
+				+ `<td><button class='change-btn'>更改</button></td>`
+				
+			const content = `<tr>` + nameStr + defaultStr + btnStr + menuStr + `</tr>`
+			tableStr = tableStr + content
 		}
-		const selArr = document.querySelectorAll('.page-dropmenu')
-		for(var i=0;i<selArr.length;i++){
-			const updateDiv = selArr[i]
-			const name = updateDiv.getAttribute('name')
-			
-			updateDiv.innerHTML = optArr[name]
-		}
+		const updateDiv = document.getElementById('homepage-table')
+		updateDiv.innerHTML = tableStr
+
+		
 		return
 	}
 }

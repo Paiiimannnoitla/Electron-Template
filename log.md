@@ -8,6 +8,7 @@
 	## 2024.10.23		version 0.0.5 -- Setting
 	-- Function implementation
 	-- Rewrite function
+	-- Clear wasted codes
 	# Added
 	1. Add gl-init function to handle global loading
 		1.1 Add gl-init structure
@@ -28,6 +29,8 @@
 	1. Move templatePath constant to global for further developing creation
 		-- finished
 	2. Rewrite homepage function by globalArr
+		-- finished
+	3. Rewrite homepage creation by globalArr
 		-- finished
 ---
 	## 2024.08.23		version 0.0.4 -- Setting
