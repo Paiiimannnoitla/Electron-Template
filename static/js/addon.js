@@ -145,7 +145,6 @@ const optMaker = (arr)=>{
 		const e = arr[i]
 		optArr[i] = `<option value='` + e + `'>` + e + `</option>`
 	}
-	console.log(optArr)
 	return optArr.join('')
 }
 // Transform into money format

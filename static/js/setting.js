@@ -37,6 +37,7 @@ pageArr['setting'] = async()=>{
 	const isHomepage = currPage == 'homepage'
 	if(isHomepage){
 		// Loading available homepage
+		/*
 		const tempArr = Object.copy(stArr['template'])
 		
 		let tableStr = ''
@@ -58,25 +59,44 @@ pageArr['setting'] = async()=>{
 		}
 		const updateDiv = document.getElementById('homepage-table')
 		updateDiv.innerHTML = tableStr
-
+*/
 		
 		return
 	}
 }
 
 // Preload data
-loadArr['setting'] = async()=>{
+preloadArr['setting'] = async()=>{
 	const templateArr = globalArr.preload.template
-	stArr['template'] = templateArr
-	console.log(templateArr)
-	const menuArr = {}
+	let tableStr = ''
 	for(const k in templateArr){
+		const nameStr = `<td>` + k + `</td>`
+			
+		const defaultStr = `<td><span id='` + k + `-homepage' class='autofill'></span></td>`
+			
+		const btnStr = `<td><button name='` + k + `-homepage' class='save-btn'>`
+			+ `Save</button></td>`
+			
 		const arr = templateArr[k]
-		
+		const optStr = optMaker(arr)
+		const menuStr = `<td><select name="` + k + `">` + optStr + `</select></td>`
+			+ `<td><button class='change-btn'>更改</button></td>`
+				
+		const content = `<tr>` + nameStr + defaultStr + btnStr + menuStr + `</tr>`
+		tableStr = tableStr + content
 	}
+	stArr['template'] = tableStr
+	/*
+	const updateDiv = document.getElementById('homepage-table')
+	updateDiv.innerHTML = tableStr*/
 	
 }
 
+// Loaded Function
+loadArr['setting'] = async()=>{
+	const updateDiv = document.getElementById('homepage-table')
+	updateDiv.innerHTML = stArr['template']
+}
 // Main page function
 funcArr['setting'] = async()=>{
 	const initStatus = await stInit()

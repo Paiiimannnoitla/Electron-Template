@@ -32,6 +32,8 @@
 		-- finished
 	3. Rewrite homepage creation by globalArr
 		-- finished
+	4. Remkae test page to fit new task phase structure
+		-- finished
 ---
 	## 2024.08.23		version 0.0.4 -- Setting
 	-- Function implementation
