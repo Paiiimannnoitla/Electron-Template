@@ -5,6 +5,12 @@
 	2. Check if setting function really need to load config twice
 		-- processing
 ---
+	## 2024.10.25		version 0.0.6 -- Setting
+	-- Function enhancement
+	# Added
+	1. Add a check on id and name to improve the performance of pack function
+		-- finished
+---
 	## 2024.10.23		version 0.0.5 -- Setting
 	-- Function implementation
 	-- Rewrite function
